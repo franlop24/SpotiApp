@@ -12,21 +12,25 @@ export class SpotifyService {
     console.log('Spotify Service Created');
   }
 
-  getNewReleases(){
+  getQuery(query: string){
+    
+    const url = `https://api.spotify.com/v1/${ query }`;
 
     const headers = new HttpHeaders({
       'Authorization': 'Bearer BQAHxfRt4M_hKoohFn3Z_WhtAvfbm4_kbTTNuPDBCr7CR0LD3IukXj1aEy8YiHxGpdS1BVGHEpP_Uoe7cTo'
     });
-    return this.http.get('https://api.spotify.com/v1/browse/new-releases', { headers })
-                .pipe( map( data => data['albums'].items ));
 
+    return this.http.get(url, {headers});
+  }
+
+  getNewReleases(){
+    return this.getQuery('browse/new-releases')
+                .pipe( map( data => data['albums'].items ));
   }
 
   getArtist( termino:string ){
-    const headers = new HttpHeaders({
-      'Authorization': 'Bearer BQAHxfRt4M_hKoohFn3Z_WhtAvfbm4_kbTTNuPDBCr7CR0LD3IukXj1aEy8YiHxGpdS1BVGHEpP_Uoe7cTo'
-    });
-    return this.http.get(`https://api.spotify.com/v1/search?q=${ termino }&type=artist&limit=10`, { headers })
+    return this.getQuery(`search?q=${ termino }&type=artist&limit=10`)
                 .pipe(map( data => data['artists'].items ));
   }
+
 }
