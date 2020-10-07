@@ -15,10 +15,12 @@ export class SearchComponent {
 
   buscar(termino: string){
     console.log(termino);
-    this._spotifyService.getArtist(termino)
+    if(termino.length > 0){
+      this._spotifyService.getArtist(termino)
         .subscribe( (data: any)  => {
           this.artists = data;
         });
+    }
   }
 
 }

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row mb-3">
     <div class="col">
         <input type="text" 
                 (keyup)="buscar(termino.value)" 
@@ -10,11 +10,4 @@
 
 <hr>
 
-<div class="card-columns">
-    <div class="card" *ngFor="let artist of artists">
-        <img [src]="artist.images | noimage " alt="" class="card-img-top">
-        <div class="card-body">
-            <h5 class="card-title">{{ artist.name }}</h5>
-        </div>
-    </div>
-</div>
+<app-tarjetas [items]="artists"></app-tarjetas>
