@@ -6,13 +6,22 @@ import { Component, Input, OnInit } from '@angular/core';
   styles: [
   ]
 })
-export class TarjetasComponent implements OnInit {
+export class TarjetasComponent {
 
   @Input() items: any[] = []
 
   constructor() { }
 
-  ngOnInit(): void {
+  verArtista(item: any){
+
+    let artistaId;
+
+    if(item.type === 'artist'){
+      artistaId = item.id;
+    } else {
+      artistaId = item.artists[0].id
+;    }
+    console.log(artistaId);
   }
 
 }

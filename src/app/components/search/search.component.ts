@@ -24,6 +24,8 @@ export class SearchComponent {
           this.artists = data;
           this.loading = false;
         });
+    }else{
+      this.loading = true;
     }
   }
 
