@@ -31,7 +31,7 @@
                         <td><img [src]="track.album.images | noimage" alt="" class="img-thumb"></td>
                         <td>{{ track.album.name | lowercase }}</td>
                         <td>{{ track.name | lowercase}}</td>
-                        <td></td>
+                        <td><iframe [src]="track.uri | domseguro: 'https://open.spotify.com/embed?uri='" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></td>
                     </tr>
                 </tbody>
             </table>
