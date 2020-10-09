@@ -17,4 +17,24 @@
             Regresar
         </button>
     </div>
+    <div class="row">
+        <div class="col">
+            <table class="table text-white">
+                <thead>
+                    <th>Foto</th>
+                    <th>Album</th>
+                    <th>Canción</th>
+                    <th>Vista previa</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let track of topTracks">
+                        <td><img [src]="track.album.images | noimage" alt="" class="img-thumb"></td>
+                        <td>{{ track.album.name | lowercase }}</td>
+                        <td>{{ track.name | lowercase}}</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

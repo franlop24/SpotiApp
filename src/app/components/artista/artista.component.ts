@@ -11,6 +11,8 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 export class ArtistaComponent {
 
   artist: any = {};
+  topTracks: any[] = [];
+
   loading: boolean;
 
   constructor(private router: ActivatedRoute,
@@ -19,6 +21,7 @@ export class ArtistaComponent {
     this.router.params.subscribe(params => {
       console.log(params['id']);
       this.getArtist(params['id']);
+      this.getTopTracks(params['id']);
     });
   }
 
@@ -29,6 +32,14 @@ export class ArtistaComponent {
           setTimeout(() => {
             this.loading = false;
           }, 1000);
+        });
+  }
+
+  getTopTracks(id:string){
+    this._spotifyService.getTopTracks(id)
+        .subscribe(tracks => {
+          this.topTracks = tracks;
+          console.log(this.topTracks);
         });
   }
 
